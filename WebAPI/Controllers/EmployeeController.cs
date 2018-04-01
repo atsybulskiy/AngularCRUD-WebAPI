@@ -12,18 +12,17 @@ using WebAPI.Models;
 
 namespace WebAPI.Controllers
 {
-    //[EnableCors(origins: "http://localhost:4200", headers: "*", methods: "*")]
-    public class EmployeesController : ApiController
+    public class EmployeeController : ApiController
     {
         private DBModels db = new DBModels();
 
-        // GET: api/Employees
+        // GET: api/Employee
         public IQueryable<Employee> GetEmployee()
         {
             return db.Employee;
         }
 
-        // GET: api/Employees/5
+        // GET: api/Employee/5
         [ResponseType(typeof(Employee))]
         public IHttpActionResult GetEmployee(int id)
         {
@@ -36,14 +35,14 @@ namespace WebAPI.Controllers
             return Ok(employee);
         }
 
-        // PUT: api/Employees/5
+        // PUT: api/Employee/5
         [ResponseType(typeof(void))]
         public IHttpActionResult PutEmployee(int id, Employee employee)
         {
-            //if (!ModelState.IsValid)
-            //{
-            //    return BadRequest(ModelState);
-            //}
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
 
             if (id != employee.EmployeeID)
             {
@@ -71,22 +70,22 @@ namespace WebAPI.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        // POST: api/Employees
+        // POST: api/Employee
         [ResponseType(typeof(Employee))]
         public IHttpActionResult PostEmployee(Employee employee)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
+//            if (!ModelState.IsValid)
+//            {
+//                return BadRequest(ModelState);
+//            }
 
             db.Employee.Add(employee);
             db.SaveChanges();
 
-            return CreatedAtRoute("DefaultApi", new {id = employee.EmployeeID}, employee);
+            return CreatedAtRoute("DefaultApi", new { id = employee.EmployeeID }, employee);
         }
 
-        // DELETE: api/Employees/5
+        // DELETE: api/Employee/5
         [ResponseType(typeof(Employee))]
         public IHttpActionResult DeleteEmployee(int id)
         {
@@ -108,7 +107,6 @@ namespace WebAPI.Controllers
             {
                 db.Dispose();
             }
-
             base.Dispose(disposing);
         }
 

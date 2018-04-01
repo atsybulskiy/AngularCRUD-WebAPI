@@ -10,16 +10,18 @@
 </head>
 <body>
 <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
-    @Html.ActionLink("Application name", "Index", "Home", new {area = ""}, new {@class = "navbar-brand"})
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
+    <div class="container">
+        @Html.ActionLink("WebAPI", "Index", "Home", new {area = ""}, new {@class = "navbar-brand"})
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
 
-    <div class="collapse navbar-collapse" id="navbarsExampleDefault">
-        <ul class="navbar-nav mr-auto">
-            <li class="nav-item">@Html.ActionLink("Home", "Index", "Home", new {area = ""}, new {@class = "nav-link"})</li>
-            <li class="nav-item">@Html.ActionLink("API", "Index", "Help", new {area = ""}, new {@class = "nav-link"})</li>
-        </ul>
+        <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">@Html.ActionLink("Home", "Index", "Home", new {area = ""}, new {@class = "nav-link"})</li>
+                <li class="nav-item">@Html.ActionLink("API", "Index", "Help", new {area = ""}, new {@class = "nav-link"})</li>
+            </ul>
+        </div>
     </div>
 </nav>
 <main role="main">
